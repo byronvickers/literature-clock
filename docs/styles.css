@@ -39,16 +39,44 @@ cite #book{
     font-style: normal;
 }
 
-#button {
+.footer {
     font-size: 10px;
-    width: 90%;
+    width: 50%;
     position: fixed;
-    bottom:2%;
+    bottom: 2%;
     color: dimgray;
+}
+
+#credits {
     padding-left: 40px;
     padding-right: 0px;
-
 }
-#button a, a:visited {
+
+#controls {
+    padding-left: 0px;
+    padding-right: 40px;
+    right: 0;
+    text-align: right;
+}
+
+a, a:visited {
     color: rgb(66, 66, 66);
+}
+
+body.night a, body.a:visited {
+    color: rgb(187, 187, 187);
+}
+
+
+:-webkit-full-screen #credits {
+    bottom: -10px;
+}
+:-moz-full-screen #credits {
+    bottom: -10px;
+}
+:-ms-fullscreen #credits {
+    bottom: -10px;
+}
+:fullscreen #credits {
+    bottom: -10px;
 }

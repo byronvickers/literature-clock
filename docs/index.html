@@ -4,8 +4,45 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
-        function setColourScheme() {
-            if(window.location.hash == "#night"){
+        function openFullscreen() {
+            var elem = document.documentElement;
+            if (elem.requestFullscreen) {
+                elem.requestFullscreen();
+            } else if (elem.mozRequestFullScreen) { /* Firefox */
+                elem.mozRequestFullScreen();
+            } else if (elem.webkitRequestFullscreen) { /* Chrome, Safari and Opera */
+                elem.webkitRequestFullscreen();
+            } else if (elem.msRequestFullscreen) { /* IE/Edge */
+                elem.msRequestFullscreen();
+            }
+        }
+        function closeFullscreen() {
+            if (document.exitFullscreen) {
+                document.exitFullscreen();
+            } else if (document.mozCancelFullScreen) { /* Firefox */
+                document.mozCancelFullScreen();
+            } else if (document.webkitExitFullscreen) { /* Chrome, Safari and Opera */
+                document.webkitExitFullscreen();
+            } else if (document.msExitFullscreen) { /* IE/Edge */
+                document.msExitFullscreen();
+            }
+        }
+        function toggleFullscreen() {
+            if (document.fullscreenElement ||
+                document.mozFullScreenElement ||
+                document.webkitFullscreenElement ||
+                document.msFullscreenElement ) {
+                closeFullscreen()
+            } else {
+                openFullscreen()
+            }
+        }
+        function toggleNightMode() {
+            if(localStorage.getItem("nightmode")){
+                localStorage.removeItem("nightmode")
+                document.body.className = ""
+            } else {
+                localStorage.setItem("nightmode", 1)
                 document.body.className = "night"
             }
         }
@@ -24,10 +61,6 @@
             return (text);
         }
         function startTime() {
-            // Load colour scheme
-            setColourScheme()
-
-            // Do everything else
             var today = new Date();
             var h = today.getHours();
             var m = today.getMinutes();
@@ -94,11 +127,17 @@
         </cite>
     </div>
 
-    <div id="button">
-        Based on work and ideas by
-        <a href="http://www.eerlijkemedia.nl/">Jaap Meijers</a> (<a href="https://www.instructables.com/id/Literary-Clock-Made-From-E-reader/">E-reader clock</a>),
-        <a href="http://litclock.mohawkhq.com/">The Guardian</a> and
-        <a href="https://github.com/JohannesNE/literature-clock">JohannesNE</a>
+    <div id="footer">
+        <div id="credits" class="footer">
+            Based on work and ideas by
+            <a href="http://www.eerlijkemedia.nl/">Jaap Meijers</a> (<a href="https://www.instructables.com/id/Literary-Clock-Made-From-E-reader/">E-reader clock</a>),
+            <a href="http://litclock.mohawkhq.com/">The Guardian</a> and
+            <a href="https://github.com/JohannesNE/literature-clock">JohannesNE</a>
+        </div>
+        <div id="controls" class="footer">
+            <a href="#" onclick="toggleFullscreen()">Fullscreen</a> &middot;
+            <a href="#" onclick="toggleNightMode()">Night mode</a>
+        </div>
     </div>
 
 
