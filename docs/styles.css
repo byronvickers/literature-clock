@@ -2,7 +2,11 @@ html, body {
     margin: 0; padding: 0;
     height: 100%;
     overflow: auto;
+    background-color: white;
+}
 
+body.night {
+    background-color: black;
 }
 
 /*
@@ -13,9 +17,12 @@ html, body {
 #lit_quote em {
     font-weight: 900;
     color: rgb(19, 19, 19);
-    font-style: normal
+    font-style: normal;
 }
 
+body.night #lit_quote em {
+    color: rgb(217, 217, 217);
+}
 
 #main_text {
     width: 80vw;
@@ -43,5 +50,5 @@ cite #book{
 
 }
 #button a, a:visited {
-    color: rgb(66, 66, 66)
+    color: rgb(66, 66, 66);
 }

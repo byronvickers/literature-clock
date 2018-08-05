@@ -4,6 +4,11 @@
 <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script>
+        function setColourScheme() {
+            if(window.location.hash == "#night"){
+                document.body.className = "night"
+            }
+        }
         function loadFile(timeStamp) {
             var text = {};
             $.ajaxSetup({
@@ -19,6 +24,10 @@
             return (text);
         }
         function startTime() {
+            // Load colour scheme
+            setColourScheme()
+
+            // Do everything else
             var today = new Date();
             var h = today.getHours();
             var m = today.getMinutes();
